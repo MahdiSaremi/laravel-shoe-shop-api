@@ -13,3 +13,5 @@ Route::prefix('product')->controller(ProductController::class)->group(function (
     Route::post('/', 'index');
     Route::post('{id}', 'show');
 });
+
+require __DIR__.'/auth.php';
