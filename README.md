@@ -3,9 +3,18 @@
 The shoe shop front-end project is [here](#).
 
 ## Installation:
-First clone the repository, and then run:
+1- Clone the repository
+
+2- Run the following command to install dependencies:
 ```shell
 composer i
+```
+
+2- Copy `.env.example` as `.env` and edit the configurations.
+
+3- Run the following command to generate a new key:
+```shell
+php artisan key:generate
 ```
 
 ## Run Api
@@ -14,7 +23,7 @@ Run the following command to run the api in dev mode:
 php artisan serve
 ```
 
-## Class List
+## Model List
 ### User
 - `id` - `int`
 - `first_name` - `string`
