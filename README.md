@@ -17,6 +17,11 @@ composer i
 php artisan key:generate
 ```
 
+4- Run the following command to install database:
+```php
+php artisan migrate
+```
+
 ## Run Api
 Run the following command to run the api in dev mode:
 ```shell
@@ -98,5 +103,12 @@ php artisan serve
 
 
 ## Api List
+- Api Url: `http://localhost:8000/`
 
+### Product List
+- POST `/product`
+- Result: Paginate<[Product](#Product)>
 
+### Get Product
+- POST `/product/{product:id}`
+- Result: [Product](#Product)
