@@ -104,6 +104,7 @@ php artisan serve
 
 ## Api List
 - Api Url: `http://localhost:8000/`
+- Content Type: `application/json`
 
 ### Product
 
