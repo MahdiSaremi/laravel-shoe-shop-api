@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "4d7e23f47eb022ad4f2d3a4a0bc5c943",
+    "content-hash": "192b3e557f80940c2229e8470879d9f2",
     "packages": [
         {
             "name": "brick/math",
@@ -3172,6 +3172,56 @@
                 }
             ],
             "time": "2024-04-27T21:32:50+00:00"
+        },
+        {
+            "name": "rapid/laplus",
+            "version": "1.4.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/rapidphp/laplus.git",
+                "reference": "395de52b0a5b3f38bc4eef8cd60b2449795c3c44"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/rapidphp/laplus/zipball/395de52b0a5b3f38bc4eef8cd60b2449795c3c44",
+                "reference": "395de52b0a5b3f38bc4eef8cd60b2449795c3c44",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "^11.1"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^9.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Rapid\\Laplus\\LaplusServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Rapid\\Laplus\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mahdi Saremi",
+                    "email": "mahdisarmi00@gmail.com"
+                }
+            ],
+            "description": "Laravel Plus+",
+            "support": {
+                "issues": "https://github.com/rapidphp/laplus/issues",
+                "source": "https://github.com/rapidphp/laplus/tree/1.4.2"
+            },
+            "time": "2024-08-26T21:38:07+00:00"
         },
         {
             "name": "symfony/clock",
