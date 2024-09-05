@@ -105,11 +105,15 @@ php artisan serve
 ## Api List
 - Api Url: `http://localhost:8000/`
 
-### Product List
+### Product
+
+List
+
 - POST `/product`
 - Result: Paginate<[Product](#Product)>
 
-### Get Product
+Show
+
 - POST `/product/{product:id}`
 - Result: [Product](#Product)
 
