@@ -20,7 +20,7 @@ class UserPresent extends Present
         $this->string('first_name');
         $this->string('last_name');
         $this->string('phone')->unique();
-        $this->string('referral_code')->unique();
+        $this->string('referral_code')->unique(); // todo: This is the user code! not the invited by code
         $this->foreignTo(User::class, 'invited_by_id')->nullOnDelete();
         $this->unsignedInteger('club_score')->default(0);
         $this->password();

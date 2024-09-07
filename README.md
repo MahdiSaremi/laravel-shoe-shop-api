@@ -106,6 +106,25 @@ php artisan serve
 - Api Url: `http://localhost:8000/`
 - Content Type: `application/json`
 
+### Auth
+
+Register
+
+- POST `/auth/register`
+- Fields: `first_name`, `last_name`, `phone`, `referral_code`, `password`
+- Result: `true`
+
+Login
+
+- POST `/auth/login`
+- Fields: `phone`, `password`
+- Result: `true`
+
+Logout
+
+- POST `/auth/logout`
+- Result: `true`
+
 ### Product
 
 List
@@ -123,4 +142,20 @@ Show
 - `401` - Unauthorized
 - `403` - Forbidden
 - `404` - Not Found
+- `422` - Unprocessable Content
 - `500` - Internal Server Error
+
+### Validation
+Validation errors returns `422` status and has `message`
+    and `errors` as following syntax:
+
+```json
+{
+    "message": "The test field is required.",
+    "errors": {
+        "test": [
+            "The test field is required."
+        ]
+    }
+}
+```
