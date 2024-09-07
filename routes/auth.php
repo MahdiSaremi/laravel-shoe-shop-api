@@ -9,7 +9,7 @@ use App\Http\Controllers\AuthDefault\RegisteredUserController;
 use App\Http\Controllers\AuthDefault\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
-Route::prefix('/auth')->controller(AuthController::class)->group(function()
+Route::prefix('/')->controller(AuthController::class)->group(function()
 {
     Route::post('/register', 'register')->middleware('guest:sanctum');
     Route::post('/login', 'login')->middleware('guest:sanctum');

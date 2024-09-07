@@ -110,19 +110,19 @@ php artisan serve
 
 Register
 
-- POST `/auth/register`
+- POST `/register`
 - Fields: `first_name`, `last_name`, `phone`, `referral_code`, `password`
 - Result: `true`
 
 Login
 
-- POST `/auth/login`
+- POST `/login`
 - Fields: `phone`, `password`
 - Result: `true`
 
 Logout
 
-- POST `/auth/logout`
+- POST `/logout`
 - Result: `true`
 
 ### Product
@@ -136,6 +136,31 @@ Show
 
 - POST `/product/{product:id}`
 - Result: [Product](#Product)
+
+## Usage
+### Setup In React
+```js
+axios.defaults.baseURL = "http://localhost:8000"
+axios.defaults.withCredentials = true;
+axios.defaults.withXSRFToken = true;
+```
+
+### Initialize CSRF Cookie
+Run the following api to set the CSRF cookie:
+```js
+axios.get('/sanctum/csrf-cookie').then(() => {
+    // CSRF is set
+});
+```
+The CSRF has expiration time.
+
+### Request
+```js
+    axios.METHOD('URL', {
+        FIELDS
+    })
+    .then(response => console.log(response))
+```
 
 ## Api Status
 - `200` - Successful
