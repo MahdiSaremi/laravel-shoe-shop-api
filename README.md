@@ -100,6 +100,21 @@ php artisan serve
 - `paid_price` - `int`
 - `used_offer_id` - `?int`
 - `status` - `enum[Queue, Completed]`
+- `customer_info` - `array`
+
+### Rate
+- `id` - `int`
+- `product_id` - `int`
+- `user_id` - `int`
+- `rate` - `int`
+- `text` - `string`
+
+### Comment
+- `id` - `int`
+- `product_id` - `int`
+- `user_id` - `int`
+- `text` - `string`
+- `reply_to_comment_id` - `?int`
 
 
 ## Api List
