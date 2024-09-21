@@ -6,10 +6,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Rapid\Laplus\Present\HasPresent;
 
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-    use HasPresent;
+
+    protected $fillable = [
+        'name',
+    ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    protected function casts() : array
+    {
+        return [
+            'password' => 'hashed',
+        ];
+    }
 }
