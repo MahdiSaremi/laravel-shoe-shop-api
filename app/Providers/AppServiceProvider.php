@@ -2,18 +2,11 @@
 
 namespace App\Providers;
 
-use App\Models\ClubHistory;
-use App\Models\File;
-use App\Models\Offer;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\ProductColor;
-use App\Models\ProductImage;
-use App\Models\ProductSize;
-use App\Models\User;
 use Illuminate\Auth\Notifications\ResetPassword;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\ServiceProvider;
+use Modules\User\Models\User;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -24,15 +17,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Relation::morphMap([
             User::class => 'User',
-            Product::class => 'Product',
-            ProductColor::class => 'ProductColor',
-            ProductSize::class => 'ProductSize',
-            ProductImage::class => 'ProductImage',
-            ClubHistory::class => 'ClubHistory',
-            File::class => 'File',
-            Offer::class => 'Offer',
-            Order::class => 'Order',
         ]);
+
+        Blueprint::macro('discount', function (string $column = 'discount')
+        {
+            $this->decimal($column, 5, 2)->default(0);
+        });
     }
 
     /**

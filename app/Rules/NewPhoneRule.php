@@ -2,8 +2,8 @@
 
 namespace App\Rules;
 
-use App\Models\User;
 use Closure;
+use Modules\User\Models\User;
 
 class NewPhoneRule extends PhoneRule
 {
