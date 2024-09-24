@@ -4,17 +4,26 @@ namespace Modules\Product\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Modules\Product\Models\Product;
+use Modules\Product\Repositories\ProductRepository;
+use Modules\Product\Transformers\ProductCollection;
+use Modules\Product\Transformers\ProductResource;
 
 class ProductController extends Controller
 {
+
+    public function __construct(
+        public ProductRepository $productRepository,
+    )
+    {
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
-
-        return response()->json([]);
+        return new ProductCollection($this->productRepository->paginate());
     }
 
     /**
@@ -22,9 +31,20 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = $request->validate([
+            'group_id'    => ['nullable', 'exists:groups,id'],
+            'image_id'    => ['nullable', 'exists:images,id'],
+            'name'        => ['required', 'string', 'min:3', 'max:20'],
+            'code'        => ['required', 'string', 'max:6'],
+            'description' => ['required', 'string'],
+            'features'    => ['required', 'string'],
+            'price'       => ['required', 'integer'],
+            'slug'        => ['required', 'string', 'unique:products,slug'],
+        ]);
 
-        return response()->json([]);
+        $product = $this->productRepository->create($data);
+
+        return new ProductResource($product);
     }
 
     /**
@@ -32,9 +52,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
-
-        return response()->json([]);
+        return new ProductResource($this->productRepository->findOrFail($id));
     }
 
     /**
@@ -42,9 +60,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $product = $this->productRepository->findOrFail($id);
 
-        return response()->json([]);
+        $data = $request->validate([
+            'group_id'    => ['nullable', 'exists:groups,id'],
+            'image_id'    => ['nullable', 'exists:images,id'],
+            'name'        => ['nullable', 'string', 'min:3', 'max:20'],
+            'code'        => ['nullable', 'string', 'max:6'],
+            'description' => ['nullable', 'string'],
+            'features'    => ['nullable', 'string'],
+            'price'       => ['nullable', 'integer'],
+            'slug'        => ['nullable', 'string', 'unique:products,slug,'.$this->id],
+            'discount'    => ['nullable', 'numeric', 'min:0', 'max:100'],
+        ]);
+
+        $product->update($data);
+
+        return new ProductResource($product);
     }
 
     /**
@@ -52,8 +84,10 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $product = $this->productRepository->findOrFail($id);
 
-        return response()->json([]);
+        $product->delete();
+
+        return response()->json(true);
     }
 }
